@@ -1,3 +1,5 @@
+## Post the next bus from your local stop to Dweet.io, to be retreived by Freeboard.io
+
 import requests, json, dweepy, time
 
 while True:
