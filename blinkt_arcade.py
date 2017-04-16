@@ -1,3 +1,5 @@
+## Adds physical buttons to a connected home system - buttons hit the API endpoints covered in Pimoroni's Mote/Homekit tutorial
+
 from gpiozero import Button
 import time
 import urllib
