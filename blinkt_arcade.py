@@ -1,7 +1,7 @@
 ## Add physical buttons to a connected home system - buttons hit the API endpoints covered in Pimoroni's Mote/Homekit tutorial
 
 ################################################################################    
-#    Copyright (C) 2017 Callum Kirkwood                                        #
+#    Copyright © 2017 Callum Kirkwood                                          #
 #                                                                              #
 #    This program is free software: you can redistribute it and/or modify      #
 #    it under the terms of the GNU General Public License as published by      #
