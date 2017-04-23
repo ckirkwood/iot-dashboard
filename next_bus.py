@@ -4,7 +4,8 @@ import requests, json, dweepy, time
 
 while True:
 ## Query Transport API database, create dictionary from the output
-    j = requests.get('https://transportapi.com/v3/uk/bus/stop/1800NB04841/live.json?app_id=391561b5&app_key=0e3179907ec6f4ea2ca0a1f0b1c82c3f&group=route&nextbuses=yes').json()
+## Replace ATCO-CODE (unique bus stop identifier), APP-ID and APP-KEY with your own details
+    j = requests.get('https://transportapi.com/v3/uk/bus/stop/ATCO-CODE/live.json?app_id=APP-ID&app_key=APP-KEY&group=route&nextbuses=yes').json()
     d = json.dumps(j)
     data = json.loads(d)
 
