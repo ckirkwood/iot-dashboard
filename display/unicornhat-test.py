@@ -30,7 +30,6 @@ unicornhathd.brightness(0.5)
 
 width, height = unicornhathd.get_shape()
 
-try:
 
     def image(img):
         img = Image.open(img)
@@ -49,11 +48,12 @@ try:
                                     if valid:
                                         unicornhathd.show()
 
-    while True:
-        image('tick.png')
-        time.sleep(2)
-        image('cross.png')
-        time.sleep(2)
+
+while True:
+    image('tick.png')
+    time.sleep(2)
+    image('cross.png')
+    time.sleep(2)
 
 except KeyboardInterrupt:
     unicornhathd.off()
