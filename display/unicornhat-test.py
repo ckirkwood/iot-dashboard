@@ -30,25 +30,26 @@ unicornhathd.brightness(0.5)
 
 width, height = unicornhathd.get_shape()
 
-img = Image.open('crosstick.png')
+def image(img)
+    img = Image.open(img)
+    try:
+        while True:
+            for o_x in range(int(img.size[0]/width)):
+                for o_y in range(int(img.size[1]/height)):
 
-try:
-    while True:
-        for o_x in range(int(img.size[0]/width)):
-            for o_y in range(int(img.size[1]/height)):
+                    valid = False
+                    for x in range(width):
+                        for y in range(height):
+                            pixel = img.getpixel(((o_x*width)+y,(o_y*height)+x))
+                            r, g, b = int(pixel[0]),int(pixel[1]),int(pixel[2])
+                            if r or g or b:
+                                valid = True
+                                unicornhathd.set_pixel(x, y, r, g, b)
+                                if valid:
+                                    unicornhathd.show()
+                                    time.sleep(2)
 
-                valid = False
-                for x in range(width):
-                    for y in range(height):
-                        pixel = img.getpixel(((o_x*width)+y,(o_y*height)+x))
-                        r, g, b = int(pixel[0]),int(pixel[1]),int(pixel[2])
-                        if r or g or b:
-                            valid = True
-                        unicornhathd.set_pixel(x, y, r, g, b)
-                if valid:
-                    unicornhathd.show()
-                    time.sleep(2)
+image('crosstick.png')
 
 except KeyboardInterrupt:
     unicornhathd.off()
-
