@@ -11,7 +11,11 @@ try:
 except ImportError:
     exit("This script requires the pillow module\nInstall with: sudo pip install pillow")
 
-import unicornhathd as unicorn
+try:
+    import unicornhathd as unicorn
+    print("16x16 unicorn detected")
+except ImportError:
+    from unicorn_hat_sim import unicornhathd as unicorn
 
 
 print("""Unicorn HAT HD: lofi feedback display prototype
@@ -25,7 +29,7 @@ Press Ctrl+C to exit!
 
 """)
 
-unicorn.rotation(90)
+unicorn.rotation(270)
 unicorn.brightness(0.5)
 
 width, height = unicorn.get_shape()
@@ -49,9 +53,9 @@ def icon(image):
         unicorn.off()
 
 while True:
-    img = Image.open('hi.png')
+    img = Image.open('iot-dashboard/display/hi.png')
     icon(img)
-    img = Image.open('tick.png')
+    img = Image.open('iot-dashboard/display/tick.png')
     icon(img)
-    img = Image.open('cross.png')
+    img = Image.open('iot-dashboard/display/cross.png')
     icon(img)
