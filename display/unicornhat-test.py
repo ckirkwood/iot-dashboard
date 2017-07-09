@@ -11,7 +11,7 @@ try:
 except ImportError:
     exit("This script requires the pillow module\nInstall with: sudo pip install pillow")
 
-import unicornhathd
+import unicornhathd as unicorn
 
 
 print("""Unicorn HAT HD: lofi feedback display prototype
@@ -25,32 +25,38 @@ Press Ctrl+C to exit!
 
 """)
 
-unicornhathd.rotation(90)
-unicornhathd.brightness(0.5)
+unicorn.rotation(90)
+unicorn.brightness(0.5)
 
-width, height = unicornhathd.get_shape()
+width, height = unicorn.get_shape()
 
 tick = 1
 cross = 2
 
 def image(png):
-    try:
-        while True:
-            for o_x in range(int(img.size[0]/width)):
-                for o_y in range(int(img.size[1]/height)):
-                    valid = False
-                    for x in range(width):
-    	                for y in range(height):
-                            pixel = img.getpixel(((o_x*width)+y,(o_y*height)+x))
-                            r, g, b = int(pixel[0]),int(pixel[1]),int(pixel[2])
-                            if r or g or b:
-                                valid = True
-                                unicornhathd.set_pixel(x, y, r, g, b)
-                                if valid:
-                                    unicornhathd.show()
-		    		                time.sleep(2)
+   try:
+
+        for o_x in range(int(image.size[0] / width)):
+
+            for o_y in range(int(image.size[1] / height)):
+
+                valid = False
+
+                for x in range(width):
+
+                    for y in range(height):
+                        pixel = image.getpixel(((o_x * width) + y, (o_y * height) + x))
+                        r, g, b = int(pixel[0]), int(pixel[1]), int(pixel[2])
+                        if r or g or b:
+                            valid = True
+                        unicorn.set_pixel(x, y, r, g, b)
+
+                if valid:
+                    unicorn.show()
+                    time.sleep(2)
+
     except KeyboardInterrupt:
-        unicornhathd.off()
+        unicorn.off()
 
 while True:
     img = Image.open('tick.png')
