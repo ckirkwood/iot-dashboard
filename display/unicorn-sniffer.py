@@ -26,22 +26,23 @@ unicornhathd.brightness(0.5)
 width, height = unicornhathd.get_shape()
 
 
-def icon(img):
-    img = Image.open(img)
-    while True:
-        for o_x in range(int(img.size[0]/width)):
-            for o_y in range(int(img.size[1]/height)):
+def icon(image):
+    try:
+        for o_x in range(int(image.size[0] / width)):
+            for o_y in range(int(image.size[1] / height)):
                 valid = False
                 for x in range(width):
                     for y in range(height):
-                        pixel = img.getpixel(((o_x*width)+y,(o_y*height)+x))
-                        r, g, b = int(pixel[0]),int(pixel[1]),int(pixel[2])
+                        pixel = image.getpixel(((o_x * width) + y, (o_y * height) + x))
+                        r, g, b = int(pixel[0]), int(pixel[1]), int(pixel[2])
                         if r or g or b:
                             valid = True
-                            unicornhathd.set_pixel(x, y, r, g, b)
-                            if valid:
-                                unicornhathd.show()
-
+                        unicorn.set_pixel(x, y, r, g, b)
+                if valid:
+                    unicorn.show()
+                    time.sleep(2)
+    except KeyboardInterrupt:
+        unicorn.off()
 
 try:
     while True:
@@ -57,4 +58,3 @@ try:
 
 except KeyboardInterrupt:
     unicornhathd.off()
-
