@@ -49,6 +49,8 @@ def icon(image):
         unicorn.off()
 
 while True:
+    img = Image.open('hi.png')
+    icon(img)
     img = Image.open('tick.png')
     icon(img)
     img = Image.open('cross.png')
